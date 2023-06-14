@@ -6,10 +6,7 @@ import milkStgo.acopioservice.services.AcopioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,18 +19,15 @@ public class AcopioController {
     @Autowired
     private AcopioService acopioService;
 
-    @GetMapping("/fileUpload")
-    public String main() {
-        return "fileUpload";
-    }
 
     @PostMapping("/fileUpload")
-    public String upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    public ResponseEntity upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         acopioService.guardar(file);
         redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
         acopioService.leerCsv("Acopio.csv");
-        return "redirect:/fileUpload";
+        return ResponseEntity.ok().build();
     }
+
     @GetMapping("/findAll")
     public ResponseEntity<List<AcopioEntity>> findAll(){
         return  ResponseEntity.ok(acopioService.findAll());
@@ -42,6 +36,7 @@ public class AcopioController {
     public ResponseEntity<String> findName(String proveedor){
         return ResponseEntity.ok(acopioService.findName(proveedor));
     }
+
     @GetMapping("/obtenerAcopios")
     public  ResponseEntity<List<AcopioEntity>> obtenerAcopios (String proveedor){
         return  ResponseEntity.ok(acopioService.obtenerAcopios(proveedor));
@@ -67,9 +62,6 @@ public class AcopioController {
     public  ResponseEntity<Integer> totalDiasEnviados(String proveedor){
         return ResponseEntity.ok(acopioService.totalDiasEnviados(proveedor));
     }
-
-
-
 
 }
 
