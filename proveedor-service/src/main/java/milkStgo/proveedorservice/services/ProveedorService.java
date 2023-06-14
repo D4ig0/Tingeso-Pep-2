@@ -32,6 +32,7 @@ public class ProveedorService {
         proveedorRepository.deleteAll();
     }
 
+
     public ProveedorEntity findByNameCustomQuery(String nombre){
         return proveedorRepository.findByNameCustomQuery(nombre);
     }

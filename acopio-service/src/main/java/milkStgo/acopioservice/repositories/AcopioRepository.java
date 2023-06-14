@@ -15,22 +15,22 @@ public interface AcopioRepository extends JpaRepository <AcopioEntity, Integer>{
     @Query("select a from AcopioEntity a")
     List<AcopioEntity> findAll();
 
-    @Query("select a.proveedor from AcopioEntity a where a.proveedor =: proveedor")
+    @Query("select a.codigoProveedor from AcopioEntity a where a.codigoProveedor =: proveedor")
     String findName(@Param("proveedor") String proveedor);
 
-    @Query("select a from AcopioEntity a where a.proveedor =: proveedor")
+    @Query("select a from AcopioEntity a where a.codigoProveedor =: proveedor")
     List<AcopioEntity> obtenerAcopios(@Param("proveedor") String  proveedor);
 
-    @Query("SELECT COUNT(a) FROM AcopioEntity a WHERE a.proveedor = :proveedor AND LOWER(a.turno) = LOWER('M')")
+    @Query("SELECT COUNT(a) FROM AcopioEntity a WHERE a.codigoProveedor = :proveedor AND LOWER(a.turno) = LOWER('M')")
     Integer cantidadTurnoM(@Param("proveedor") String proveedor);
 
 
-    @Query("SELECT COUNT(a) FROM AcopioEntity a WHERE a.proveedor = :proveedor AND LOWER(a.turno) = LOWER('T')")
+    @Query("SELECT COUNT(a) FROM AcopioEntity a WHERE a.codigoProveedor = :proveedor AND LOWER(a.turno) = LOWER('T')")
     Integer cantidadTurnoT(@Param("proveedor") String proveedor);
 
-    @Query("SELECT SUM(CAST(a.kls_leche AS double)) FROM AcopioEntity a WHERE a.proveedor = :proveedor")
+    @Query("SELECT SUM(CAST(a.kls_leche AS double)) FROM AcopioEntity a WHERE a.codigoProveedor = :proveedor")
     Double totalLecheProveedor(@Param("proveedor") String proveedor);
 
-    @Query("SELECT COUNT(DISTINCT (Date(a.fecha))) FROM AcopioEntity a WHERE a.proveedor = :proveedor")
+    @Query("SELECT COUNT(DISTINCT (Date(a.fecha))) FROM AcopioEntity a WHERE a.codigoProveedor = :proveedor")
     Integer totalDiasEnviados(@Param("proveedor") String proveedor);
 }

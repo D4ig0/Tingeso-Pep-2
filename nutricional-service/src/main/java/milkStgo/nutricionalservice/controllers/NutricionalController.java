@@ -4,22 +4,17 @@ package milkStgo.nutricionalservice.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.ui.Model;
 import milkStgo.nutricionalservice.entities.NutricionalEntity;
 import milkStgo.nutricionalservice.services.NutricionalService;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
-@RequestMapping("/nutricional")
+@RequestMapping("/nutricionales")
 public class NutricionalController {
 
     @Autowired
@@ -37,19 +32,19 @@ public class NutricionalController {
     public  ResponseEntity<ArrayList<NutricionalEntity>> findAll(){
         return ResponseEntity.ok(nutricionalService.findAll());
     }
-    @GetMapping("/obtenerProveedor")
-    public  ResponseEntity<String> obtenerProveedor(String proveedor){
-        return ResponseEntity.ok(nutricionalService.obtenerProveedor(proveedor));
+    @GetMapping("/obtenerProveedor/{codigoProveedor}")
+    public  ResponseEntity<String> obtenerProveedor(@PathVariable("codigoProveedor") String codigoProveedor){
+        return ResponseEntity.ok(nutricionalService.obtenerProveedor(codigoProveedor));
     }
 
-    @GetMapping("/obtenerGrasa")
-    public  ResponseEntity<Double> obtenerGrasa(String proveedor){
-        return ResponseEntity.ok(nutricionalService.obtenerGrasa(proveedor));
+    @GetMapping("/obtenerGrasa/{codigoProveedor}")
+    public  ResponseEntity<Double> obtenerGrasa(@PathVariable("codigoProveedor") String codigoProveedor){
+        return ResponseEntity.ok(nutricionalService.obtenerGrasa(codigoProveedor));
     }
 
-    @GetMapping("/obtenerSolidos")
-    public  ResponseEntity<Double> obtenerSolidos(String proveedor){
-        return ResponseEntity.ok(nutricionalService.obtenerSolidos(proveedor));
+    @GetMapping("/obtenerSolidos/{codigoProveedor}")
+    public  ResponseEntity<Double> obtenerSolidos(String codigoProveedor){
+        return ResponseEntity.ok(nutricionalService.obtenerSolidos(codigoProveedor));
     }
 
 

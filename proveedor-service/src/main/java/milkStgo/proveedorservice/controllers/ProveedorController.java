@@ -6,28 +6,27 @@ import milkStgo.proveedorservice.services.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
 @Controller
-@RequestMapping
+@RequestMapping("/proveedores")
 public class ProveedorController {
 
     @Autowired
     private ProveedorService proveedorService;
 
-    @GetMapping("/getProveedores")
+    @GetMapping
     public ResponseEntity<List<ProveedorEntity>> getProveedores() {
         List<ProveedorEntity> proveedores = proveedorService.obtenerProveedores();
+        if(proveedores.isEmpty())
+            return ResponseEntity.noContent().build();
         return ResponseEntity.ok(proveedores);
     }
 
-    @PostMapping("/nuevoProveedor")
+    @PostMapping
     public ResponseEntity<?> nuevoProveedor(@RequestParam("codigo") String codigo,
                                          @RequestParam("nombre") String nombre,
                                          @RequestParam("categoria") String categoria,
@@ -42,21 +41,21 @@ public class ProveedorController {
         proveedorService.eliminarProveedores();
        return ResponseEntity.ok().build();
     }
-    @GetMapping("/findByNameCustomQuery")
-    public ResponseEntity<ProveedorEntity> findByNameCustomQuery(String nombre){
+    @GetMapping("/findByNameCustomQuery/{nombre}")
+    public ResponseEntity<ProveedorEntity> findByNameCustomQuery(@PathVariable("nombre") String nombre){
         return ResponseEntity.ok(proveedorService.findByNameCustomQuery(nombre));
     }
 
-    @GetMapping("/findCategory")
-    public ResponseEntity<String> findCategory(String codigo){
+    @GetMapping("/findCategoriaProveedor/{codigo}")
+    public ResponseEntity<String> findCategoriaProveedor(@PathVariable("codigo") String codigo){
         return ResponseEntity.ok(proveedorService.findCategory(codigo));
     }
-    @GetMapping("/findByCodigo")
-    public ResponseEntity<ProveedorEntity> findByCodigo(String codigo){
+    @GetMapping("/findByCodigo/{codigo}")
+    public ResponseEntity<ProveedorEntity> findByCodigo(@PathVariable("codigo") String codigo){
         return ResponseEntity.ok(proveedorService.findByCodigo(codigo));
     }
-    @GetMapping("findById")
-    public ResponseEntity<String> findById(int numero){
+    @GetMapping("findById/{numero}")
+    public ResponseEntity<String> findById(@PathVariable("numero") int numero){
         return  ResponseEntity.ok(proveedorService.findById(numero));
     }
 

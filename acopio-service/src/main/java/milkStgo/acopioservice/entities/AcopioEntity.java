@@ -20,7 +20,7 @@ public class AcopioEntity{
     private Integer id_acopio;
     private String fecha;
     private String turno;
-    private String proveedor;
+    private String codigoProveedor;
     private String kls_leche;
 
 

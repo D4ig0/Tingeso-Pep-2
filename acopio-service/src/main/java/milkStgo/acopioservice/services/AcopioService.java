@@ -93,42 +93,43 @@ public class AcopioService {
     public void guardarData(AcopioEntity data){
         acopioRepository.save(data);
     }
-    public void guardarDataDB(String fecha, String turno, String proveedor, String kls_leche){
+    public void guardarDataDB(String fecha, String turno, String codigoProveedor, String kls_leche){
         AcopioEntity newData = new AcopioEntity();
         newData.setFecha(fecha);
         newData.setTurno(turno);
-        newData.setProveedor(proveedor);
+        newData.setCodigoProveedor(codigoProveedor);
         newData.setKls_leche(kls_leche);
         guardarData(newData);
     }
 
     public List<AcopioEntity> findAll(){
+
         return acopioRepository.findAll();
     }
 
-    public  String findName(String proveedor){
-        return acopioRepository.findName(proveedor);
+    public  String findName(String codigoProveedor){
+        return acopioRepository.findName(codigoProveedor);
 
     }
 
-    public List<AcopioEntity> obtenerAcopios(String proveedor){
-        return acopioRepository.obtenerAcopios(proveedor);
+    public List<AcopioEntity> obtenerAcopios(String codigoProveedor){
+        return acopioRepository.obtenerAcopios(codigoProveedor);
 
     }
 
-    public Integer cantidadTurnoM(String proveedor){
-        return acopioRepository.cantidadTurnoM(proveedor);
+    public Integer cantidadTurnoM(String codigoProveedor){
+        return acopioRepository.cantidadTurnoM(codigoProveedor);
 
     }
-    public Integer cantidadTurnoT(String proveedor){
-        return acopioRepository.cantidadTurnoT(proveedor);
+    public Integer cantidadTurnoT(String codigoProveedor){
+        return acopioRepository.cantidadTurnoT(codigoProveedor);
 
     }
-    public Double totalLecheProveedor(String proveedor){
-        return  acopioRepository.totalLecheProveedor(proveedor);
+    public Double totalLecheProveedor(String codigoProveedor){
+        return  acopioRepository.totalLecheProveedor(codigoProveedor);
     }
-    public Integer totalDiasEnviados(String proveedor){
-        return acopioRepository.totalDiasEnviados(proveedor);
+    public Integer totalDiasEnviados(String codigoProveedor){
+        return acopioRepository.totalDiasEnviados(codigoProveedor);
 
     }
 

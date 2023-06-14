@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProveedorRepository extends JpaRepository<ProveedorEntity, String> {
 
+
     @Query("select e from ProveedorEntity e where e.nombre = :nombre")
     ProveedorEntity findByNameCustomQuery(@Param("nombre") String nombre);
 

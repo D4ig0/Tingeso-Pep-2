@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/acopio")
+@RequestMapping("/acopios")
 public class AcopioController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class AcopioController {
 
 
     @PostMapping("/fileUpload")
-    public ResponseEntity upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         acopioService.guardar(file);
         redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
         acopioService.leerCsv("Acopio.csv");
@@ -32,35 +32,35 @@ public class AcopioController {
     public ResponseEntity<List<AcopioEntity>> findAll(){
         return  ResponseEntity.ok(acopioService.findAll());
     }
-    @GetMapping("/findName")
-    public ResponseEntity<String> findName(String proveedor){
-        return ResponseEntity.ok(acopioService.findName(proveedor));
+    @GetMapping("/findName/{codigoProveedor}")
+    public ResponseEntity<String> findName(@PathVariable("codigoProveedor") String codigoProveedor){
+        return ResponseEntity.ok(acopioService.findName(codigoProveedor));
     }
 
-    @GetMapping("/obtenerAcopios")
-    public  ResponseEntity<List<AcopioEntity>> obtenerAcopios (String proveedor){
-        return  ResponseEntity.ok(acopioService.obtenerAcopios(proveedor));
+    @GetMapping("/obtenerAcopiosProveedor/{codigoProveedor}")
+    public  ResponseEntity<List<AcopioEntity>> obtenerAcopios (@PathVariable("codigoProveedor") String codigoProveedor){
+        return  ResponseEntity.ok(acopioService.obtenerAcopios(codigoProveedor));
     }
 
-    @GetMapping("/cantidadTurnoM")
-    public  ResponseEntity<Integer> cantidadTurnoM(String proveedor){
-        return ResponseEntity.ok(acopioService.cantidadTurnoM(proveedor));
+    @GetMapping("/cantidadTurnoM/{codigoProveedor}")
+    public  ResponseEntity<Integer> cantidadTurnoM(@PathVariable("codigoProveedor") String codigoProveedor){
+        return ResponseEntity.ok(acopioService.cantidadTurnoM(codigoProveedor));
     }
 
-    @GetMapping("/cantidadTurnoT")
-    public  ResponseEntity<Integer> cantidadTurnoT(String proveedor){
-        return ResponseEntity.ok(acopioService.cantidadTurnoT(proveedor));
+    @GetMapping("/cantidadTurnoT/{codigoProveedor}")
+    public  ResponseEntity<Integer> cantidadTurnoT(@PathVariable ("codigoProveedor") String codigoProveedor){
+        return ResponseEntity.ok(acopioService.cantidadTurnoT(codigoProveedor));
     }
 
-    @GetMapping("/totalLecheProveedor")
-    public  ResponseEntity<Double> totalLecheProveedor(String proveedor){
-        return ResponseEntity.ok(acopioService.totalLecheProveedor(proveedor));
+    @GetMapping("/totalLecheProveedor/{codigoProveedor}")
+    public  ResponseEntity<Double> totalLecheProveedor(@PathVariable("codigoProveedor") String codigoProveedor){
+        return ResponseEntity.ok(acopioService.totalLecheProveedor(codigoProveedor));
     }
 
 
-    @GetMapping("/totalDiasEnviados")
-    public  ResponseEntity<Integer> totalDiasEnviados(String proveedor){
-        return ResponseEntity.ok(acopioService.totalDiasEnviados(proveedor));
+    @GetMapping("/totalDiasEnviados/{codigoProveedor}")
+    public  ResponseEntity<Integer> totalDiasEnviados(@PathVariable("codigoProveedor") String codigoProveedor){
+        return ResponseEntity.ok(acopioService.totalDiasEnviados(codigoProveedor));
     }
 
 }

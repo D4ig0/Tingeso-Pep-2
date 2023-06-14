@@ -4,8 +4,6 @@ import lombok.Generated;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import milkStgo.nutricionalservice.entities.NutricionalEntity;
@@ -90,15 +88,14 @@ public class NutricionalService {
     }
 
 
-    public void guardarDataDB(String proveedor,String grasa, String  solido){
+    public void guardarDataDB(String codigoProveedor,String grasa, String  solido){
         NutricionalEntity newData = new NutricionalEntity();
-        newData.setProveedor(proveedor);
+        newData.setCodigoProveedor(codigoProveedor);
         newData.setGrasa(Integer.parseInt(grasa));
         newData.setSolidos_totales(Integer.parseInt(solido));
         guardarData(newData);
     }
 
-    //no la utilizo, debería eliminarla,
     @Deprecated
     public void eliminarData(List<NutricionalEntity> datas){
         nutricionalRepository.deleteAll();
@@ -110,14 +107,14 @@ public class NutricionalService {
     public ArrayList<NutricionalEntity> findAll(){
          return nutricionalRepository.findAll();
     }
-    public String obtenerProveedor(String proveedor){
-        return nutricionalRepository.obtenerProveedor(proveedor);
+    public String obtenerProveedor(String codigoProveedor){
+        return nutricionalRepository.obtenerProveedor(codigoProveedor);}
+    public Double obtenerGrasa(String codigoProveedor){
+
+        return  nutricionalRepository.obtenerGrasa(codigoProveedor);
     }
-    public Double obtenerGrasa(String proveedor){
-        return  nutricionalRepository.obtenerGrasa(proveedor);
-    }
-    public Double obtenerSolidos(String proveedor){
-        return  nutricionalRepository.obtenerSolidos(proveedor);
+    public Double obtenerSolidos(String codigoProveedor){
+        return  nutricionalRepository.obtenerSolidos(codigoProveedor);
 
     }
 
