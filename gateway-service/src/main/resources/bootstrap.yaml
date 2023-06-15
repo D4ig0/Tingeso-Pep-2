@@ -4,4 +4,9 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://${HOSTNAME:localhost}:8081
+      uri: http://localhost:8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

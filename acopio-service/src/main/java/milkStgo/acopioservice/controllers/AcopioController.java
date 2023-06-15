@@ -5,19 +5,20 @@ import milkStgo.acopioservice.entities.AcopioEntity;
 import milkStgo.acopioservice.services.AcopioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-@Controller
+
 @RequestMapping("/acopios")
+@RestController
 public class AcopioController {
 
     @Autowired
     private AcopioService acopioService;
+
 
 
     @PostMapping("/fileUpload")
@@ -27,6 +28,7 @@ public class AcopioController {
         acopioService.leerCsv("Acopio.csv");
         return ResponseEntity.ok().build();
     }
+
 
     @GetMapping("/findAll")
     public ResponseEntity<List<AcopioEntity>> findAll(){
