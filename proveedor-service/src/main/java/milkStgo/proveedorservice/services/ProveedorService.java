@@ -4,8 +4,6 @@ package milkStgo.proveedorservice.services;
 import milkStgo.proveedorservice.entities.ProveedorEntity;
 import milkStgo.proveedorservice.repositories.ProveedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,11 +38,11 @@ public class ProveedorService {
     public  String findCategory(String codigo){
         return proveedorRepository.findCategory(codigo);
     }
+
     public  ProveedorEntity findByCodigo(String codigo){
         return proveedorRepository.findByCodigo(codigo);
-
     }
-    public  String findById(int numero){
+    public  ProveedorEntity findById(Integer numero){
         return  proveedorRepository.findById(numero);
 
     }

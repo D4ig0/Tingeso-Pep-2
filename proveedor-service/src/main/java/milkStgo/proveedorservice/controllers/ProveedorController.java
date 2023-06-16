@@ -54,8 +54,10 @@ public class ProveedorController {
     public ResponseEntity<ProveedorEntity> findByCodigo(@PathVariable("codigo") String codigo){
         return ResponseEntity.ok(proveedorService.findByCodigo(codigo));
     }
+
+
     @GetMapping("findById/{numero}")
-    public ResponseEntity<String> findById(@PathVariable("numero") int numero){
+    public ResponseEntity<ProveedorEntity> findById(@PathVariable("numero") Integer numero){
         return  ResponseEntity.ok(proveedorService.findById(numero));
     }
 
