@@ -1,12 +1,12 @@
 package milkStgo.acopioservice.entities;
 
-
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "acopios")
@@ -21,7 +21,7 @@ public class AcopioEntity{
     private Integer id_acopio;
     private String fecha;
     private String turno;
-    private String codigoProveedor;
+    private String codigo;
     private String kls_leche;
 
 

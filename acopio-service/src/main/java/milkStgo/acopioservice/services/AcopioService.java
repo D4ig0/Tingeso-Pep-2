@@ -19,7 +19,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @Service
-
 public class AcopioService {
     @Autowired
     private AcopioRepository acopioRepository;
@@ -95,7 +94,7 @@ public class AcopioService {
 
     public AcopioEntity guardarDatos(String fecha, String turno, String proveedor, String kls_leche){
         AcopioEntity data = new AcopioEntity();
-        data.setCodigoProveedor(proveedor);
+        data.setCodigo(proveedor);
         data.setFecha(fecha);
         data.setKls_leche(kls_leche);
         data.setTurno(turno);
@@ -108,10 +107,7 @@ public class AcopioService {
         return acopioRepository.findAll();
     }
 
-    public  String findName(String codigoProveedor){
-        return acopioRepository.findName(codigoProveedor);
 
-    }
 
     public List<AcopioEntity> obtenerAcopios(String codigoProveedor){
         return acopioRepository.obtenerAcopios(codigoProveedor);

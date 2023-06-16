@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-
-@RequestMapping("/acopios")
 @RestController
+@RequestMapping("/acopios")
 public class AcopioController {
 
     @Autowired
@@ -22,22 +20,17 @@ public class AcopioController {
 
 
     @PostMapping("/fileUpload")
-    public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        acopioService.guardar(file);
-        redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
-        acopioService.leerCsv("Acopio.csv");
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> upload(@RequestParam("file") MultipartFile archivo){
+        acopioService.guardar(archivo);
+        return ResponseEntity.ok(acopioService.leerCsv("Acopio.csv"));
     }
-
 
     @GetMapping("/findAll")
     public ResponseEntity<List<AcopioEntity>> findAll(){
         return  ResponseEntity.ok(acopioService.findAll());
     }
-    @GetMapping("/findName/{codigoProveedor}")
-    public ResponseEntity<String> findName(@PathVariable("codigoProveedor") String codigoProveedor){
-        return ResponseEntity.ok(acopioService.findName(codigoProveedor));
-    }
+
+
 
     @GetMapping("/obtenerAcopiosProveedor/{codigoProveedor}")
     public  ResponseEntity<List<AcopioEntity>> obtenerAcopios (@PathVariable("codigoProveedor") String codigoProveedor){
