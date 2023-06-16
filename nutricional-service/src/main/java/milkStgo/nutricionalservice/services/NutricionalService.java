@@ -88,11 +88,11 @@ public class NutricionalService {
     }
 
 
-    public void guardarDataDB(String codigoProveedor,String grasa, String  solido){
+    public void guardarDataDB(String codigo,String grasa, String  solido){
         NutricionalEntity newData = new NutricionalEntity();
-        newData.setCodigoProveedor(codigoProveedor);
+        newData.setCodigo(codigo);
         newData.setGrasa(Integer.parseInt(grasa));
-        newData.setSolidos_totales(Integer.parseInt(solido));
+        newData.setSolidos(Double.parseDouble(solido));
         guardarData(newData);
     }
 
@@ -107,14 +107,14 @@ public class NutricionalService {
     public ArrayList<NutricionalEntity> findAll(){
          return nutricionalRepository.findAll();
     }
-    public String obtenerProveedor(String codigoProveedor){
-        return nutricionalRepository.obtenerProveedor(codigoProveedor);}
-    public Double obtenerGrasa(String codigoProveedor){
+    public NutricionalEntity obtenerProveedor(String codigo){
+        return nutricionalRepository.obtenerProveedor(codigo);}
+    public Double obtenerGrasa(String codigo){
 
-        return  nutricionalRepository.obtenerGrasa(codigoProveedor);
+        return  nutricionalRepository.obtenerGrasa(codigo);
     }
-    public Double obtenerSolidos(String codigoProveedor){
-        return  nutricionalRepository.obtenerSolidos(codigoProveedor);
+    public Double obtenerSolidos(String codigo){
+        return  nutricionalRepository.obtenerSolidos(codigo);
 
     }
 

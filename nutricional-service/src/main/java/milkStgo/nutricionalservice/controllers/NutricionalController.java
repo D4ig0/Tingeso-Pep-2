@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import milkStgo.nutricionalservice.entities.NutricionalEntity;
 import milkStgo.nutricionalservice.services.NutricionalService;
 
@@ -22,29 +21,27 @@ public class NutricionalController {
 
 
     @PostMapping("/fileUploadNutricional")
-    public ResponseEntity upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file) {
         nutricionalService.guardar(file);
-        redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
-        nutricionalService.leerCsv("Nutricional.csv");
-        return ResponseEntity.ok().build();
+       nutricionalService.leerCsv("Nutricional.csv");
+       return ResponseEntity.ok().build();
     }
     @GetMapping("/findAll")
     public  ResponseEntity<ArrayList<NutricionalEntity>> findAll(){
         return ResponseEntity.ok(nutricionalService.findAll());
     }
-    @GetMapping("/obtenerProveedor/{codigoProveedor}")
-    public  ResponseEntity<String> obtenerProveedor(@PathVariable("codigoProveedor") String codigoProveedor){
-        return ResponseEntity.ok(nutricionalService.obtenerProveedor(codigoProveedor));
+    @GetMapping("/obtenerProveedor/{codigo}")
+    public  ResponseEntity<NutricionalEntity> obtenerProveedor(@PathVariable("codigo") String codigo){
+        return ResponseEntity.ok(nutricionalService.obtenerProveedor(codigo));
     }
 
-    @GetMapping("/obtenerGrasa/{codigoProveedor}")
-    public  ResponseEntity<Double> obtenerGrasa(@PathVariable("codigoProveedor") String codigoProveedor){
-        return ResponseEntity.ok(nutricionalService.obtenerGrasa(codigoProveedor));
+    @GetMapping("/obtenerGrasa/{codigo}")
+    public  ResponseEntity<Double> obtenerGrasa(@PathVariable("codigo") String codigo){
+        return ResponseEntity.ok(nutricionalService.obtenerGrasa(codigo));
     }
-
-    @GetMapping("/obtenerSolidos/{codigoProveedor}")
-    public  ResponseEntity<Double> obtenerSolidos(String codigoProveedor){
-        return ResponseEntity.ok(nutricionalService.obtenerSolidos(codigoProveedor));
+    @GetMapping("/obtenerSolidos/{codigo}")
+    public  ResponseEntity<Double> obtenerSolidos(@PathVariable("codigo") String codigo){
+        return ResponseEntity.ok(nutricionalService.obtenerSolidos(codigo));
     }
 
 

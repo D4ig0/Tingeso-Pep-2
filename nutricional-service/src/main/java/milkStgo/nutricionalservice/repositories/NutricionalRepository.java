@@ -14,12 +14,12 @@ public interface NutricionalRepository extends JpaRepository<NutricionalEntity, 
     @Query("select a from NutricionalEntity a")
     ArrayList<NutricionalEntity> findAll();
 
-    @Query("select a.codigoProveedor from  NutricionalEntity  a   where a.codigoProveedor=: codigoProveedor")
-    String obtenerProveedor(@Param("proveedor") String codigoProveedor);
+    @Query("select a from  NutricionalEntity  a   where a.codigo= :codigo")
+    NutricionalEntity obtenerProveedor(@Param("codigo") String codigo);
 
-    @Query("select a.grasa from NutricionalEntity a where a.codigoProveedor= :codigoProveedor")
-    Double obtenerGrasa(@Param("codigoProveedor") String codigoProveedor);
+    @Query("select a.grasa from NutricionalEntity a where a.codigo= :codigo")
+    Double obtenerGrasa(@Param("codigo") String codigo);
 
-    @Query("select a.solidos_totales from NutricionalEntity a where a.codigoProveedor = :codigoProveedor")
-    Double obtenerSolidos(@Param("codigoProveedor") String codigoProveedor);
+    @Query("select a.solidos from NutricionalEntity a where a.codigo = :codigo")
+    Double obtenerSolidos(@Param("codigo") String codigo);
 }

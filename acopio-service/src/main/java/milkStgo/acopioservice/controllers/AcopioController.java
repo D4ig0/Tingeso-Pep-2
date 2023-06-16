@@ -32,30 +32,30 @@ public class AcopioController {
 
 
 
-    @GetMapping("/obtenerAcopiosProveedor/{codigoProveedor}")
-    public  ResponseEntity<List<AcopioEntity>> obtenerAcopios (@PathVariable("codigoProveedor") String codigoProveedor){
-        return  ResponseEntity.ok(acopioService.obtenerAcopios(codigoProveedor));
+    @GetMapping("/obtenerAcopiosProveedor/{codigo}")
+    public  ResponseEntity<List<AcopioEntity>> obtenerAcopios (@PathVariable("codigo") String codigo){
+        return  ResponseEntity.ok(acopioService.obtenerAcopios(codigo));
     }
 
-    @GetMapping("/cantidadTurnoM/{codigoProveedor}")
-    public  ResponseEntity<Integer> cantidadTurnoM(@PathVariable("codigoProveedor") String codigoProveedor){
-        return ResponseEntity.ok(acopioService.cantidadTurnoM(codigoProveedor));
+    @GetMapping("/cantidadTurnoM/{codigo}")
+    public  ResponseEntity<Integer> cantidadTurnoM(@PathVariable("codigo") String codigo){
+        return ResponseEntity.ok(acopioService.cantidadTurnoM(codigo));
     }
 
-    @GetMapping("/cantidadTurnoT/{codigoProveedor}")
-    public  ResponseEntity<Integer> cantidadTurnoT(@PathVariable ("codigoProveedor") String codigoProveedor){
-        return ResponseEntity.ok(acopioService.cantidadTurnoT(codigoProveedor));
+    @GetMapping("/cantidadTurnoT/{codigo}")
+    public  ResponseEntity<Integer> cantidadTurnoT(@PathVariable ("codigo") String codigo){
+        return ResponseEntity.ok(acopioService.cantidadTurnoT(codigo));
     }
 
-    @GetMapping("/totalLecheProveedor/{codigoProveedor}")
-    public  ResponseEntity<Double> totalLecheProveedor(@PathVariable("codigoProveedor") String codigoProveedor){
-        return ResponseEntity.ok(acopioService.totalLecheProveedor(codigoProveedor));
+    @GetMapping("/totalLecheProveedor/{codigo}")
+    public  ResponseEntity<Double> totalLecheProveedor(@PathVariable("codigo") String codigo){
+        return ResponseEntity.ok(acopioService.totalLecheProveedor(codigo));
     }
 
 
-    @GetMapping("/totalDiasEnviados/{codigoProveedor}")
-    public  ResponseEntity<Integer> totalDiasEnviados(@PathVariable("codigoProveedor") String codigoProveedor){
-        return ResponseEntity.ok(acopioService.totalDiasEnviados(codigoProveedor));
+    @GetMapping("/totalDiasEnviados/{codigo}")
+    public  ResponseEntity<Integer> totalDiasEnviados(@PathVariable("codigo") String codigo){
+        return ResponseEntity.ok(acopioService.totalDiasEnviados(codigo));
     }
 
 }

@@ -1,12 +1,11 @@
 package milkStgo.nutricionalservice.entities;
 
-import jakarta.persistence.*;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import javax.persistence.*;
 
 
 @Entity
@@ -20,9 +19,9 @@ public class NutricionalEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Integer id_nutricional;
-    private String  codigoProveedor;
+    private String  codigo;
     private Integer grasa;
-    private Integer solidos_totales;
+    private Double solidos;
 
 }
 
