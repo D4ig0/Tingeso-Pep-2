@@ -17,6 +17,8 @@ public interface PagoRepository extends JpaRepository<PagoEntity, Integer> {
     @Query("select a from PagoEntity a")
     List<PagoEntity> findAll();
 
+
+
     @Query("SELECT p FROM PagoEntity p WHERE p.codigo_proveedor = :codigo AND p.id_pago= (SELECT MAX (p2.id_pago) FROM PagoEntity p2 WHERE p2.codigo_proveedor = :codigo)")
     PagoEntity obtenerPagoActual(@Param("codigo") String codigo);
 
@@ -24,7 +26,7 @@ public interface PagoRepository extends JpaRepository<PagoEntity, Integer> {
     PagoEntity obtenerPagoAnteriorByID(@Param("numero") Long numero, @Param("codigo") String codigo);
 
 
-    @Query("SELECT p FROM PagoEntity p WHERE p.codigo_proveedor = :codigo AND p.id_pago < :idPagoActual ORDER BY p.id_pago DESC LIMIT 1")
+    @Query("SELECT p FROM PagoEntity p WHERE p.codigo_proveedor = :codigo AND p.id_pago < :idPagoActual ORDER BY p.id_pago DESC ")
     List<PagoEntity> obtenerPagoAnterior(@Param("codigo") String codigo, @Param("idPagoActual") Integer idPagoActual);
 
     @Query("SELECT p.id_pago FROM PagoEntity p WHERE p.codigo_proveedor = :codigo AND p.id_pago= (SELECT MAX (p2.id_pago) FROM PagoEntity p2 WHERE p2.codigo_proveedor = :codigo)")
@@ -32,10 +34,5 @@ public interface PagoRepository extends JpaRepository<PagoEntity, Integer> {
 
     @Query("SELECT COUNT(p) FROM PagoEntity p WHERE p.codigo_proveedor = :codigo")
     Integer obtenerCantPagos(@Param("codigo") String codigo);
-
-
-    //PagoEntity getPagoEntityByCodigo_proveedor(String codigo);JPA PRO
-
-
 
 }

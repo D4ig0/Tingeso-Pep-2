@@ -1,10 +1,8 @@
 package milkStgo.pagoservice.models;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 
 
 
@@ -15,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 public class NutricionalModel {
 
     private Integer id_nutricional;
-    private String  codigoProveedor;
+    private String  codigo;
     private Integer grasa;
     private Integer solidos_totales;
 

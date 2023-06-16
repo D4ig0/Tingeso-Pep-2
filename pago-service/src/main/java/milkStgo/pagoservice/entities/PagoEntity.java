@@ -1,13 +1,12 @@
 package milkStgo.pagoservice.entities;
 
 
-import jakarta.persistence.*;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDate;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "pagos")

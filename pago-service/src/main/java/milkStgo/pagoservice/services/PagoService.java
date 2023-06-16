@@ -12,6 +12,7 @@ import milkStgo.pagoservice.models.NutricionalModel;
 import org.springframework.web.client.RestTemplate;
 import milkStgo.pagoservice.repositories.PagoRepository;
 import java.time.*;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,8 +37,8 @@ public class PagoService {
     //Mediante RestTemplate
     /////////////////////////////////////////////////////////////////////////////////
     public List<ProveedorModel> getProveedores(){
-    List<ProveedorModel> proveedores =  restTemplate.getForObject("http://proveedor-service/proveedores",List.class);
-    return proveedores;
+    ProveedorModel[] proveedores =  restTemplate.getForObject("http://proveedor-service/proveedores",ProveedorModel[].class);
+    return Arrays.asList(proveedores);
     }
     public Integer cantidadTurnoM (String codigo){
         Integer turnoM= restTemplate.getForObject("http://acopio-service/acopios/cantidadTurnoM/" +codigo, Integer.class);
@@ -130,6 +131,7 @@ public class PagoService {
     {
         List<PagoEntity> anterior;
         PagoEntity actual = pagoRepository.obtenerPagoActual(proveedor.getCodigo());
+
         anterior= pagoRepository.obtenerPagoAnterior(proveedor.getCodigo(),actual.getId_pago());
         if (anterior.isEmpty()){return 0.0;
 
@@ -154,14 +156,16 @@ public class PagoService {
 
     public Double variacionGrasa(ProveedorModel proveedor){
 
-        Integer numero= pagoRepository.obtenerCantPagos(proveedor.getCodigo());
+
         List<PagoEntity> anterior;
 
         PagoEntity actual = pagoRepository.obtenerPagoActual(proveedor.getCodigo());
 
         anterior= pagoRepository.obtenerPagoAnterior(proveedor.getCodigo(),actual.getId_pago());
+
         if (anterior.isEmpty()){return 0.0;
-        } else {
+        }
+        else {
             return (anterior.get(0).getGrasa()- actual.getGrasa())/anterior.get(0).getGrasa();
         }}
 
@@ -181,7 +185,6 @@ public class PagoService {
 
     public Double variacionST(ProveedorModel proveedor){
 
-        Integer numero= pagoRepository.obtenerCantPagos(proveedor.getCodigo());
         List<PagoEntity> anterior;
 
         PagoEntity actual = pagoRepository.obtenerPagoActual(proveedor.getCodigo());
@@ -250,4 +253,9 @@ public class PagoService {
         pagoRepository.save(pago);
         return  pago;
     }
+    public void borrarPagos(){
+        pagoRepository.deleteAll();
+
+    }
+
 }

@@ -14,7 +14,7 @@ public class AcopioModel{
     private Integer id_acopio;
     private String fecha;
     private String turno;
-    private String codigoProveedor;
+    private String codigo;
     private String kls_leche;
 
 
