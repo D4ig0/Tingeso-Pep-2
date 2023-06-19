@@ -3,11 +3,14 @@ import axios from 'axios';
 const url = 'http://localhost:8080/pagos';
 
 class PagosService{
-    subirNutricional(pagos){
-        return axios.post(url+'/fileUpload', pagos);
+    obtenerPagos(){
+        return axios.post(url+'/obtenerPagos');
     }
-    obtenerNutricional(){
-        return axios.get(url+'/findAll');
+    realizarCalculos(){
+        return axios.get(url+'/realizarCalculos');
+    }
+    eliminarPagos(){
+        return axios.get(url+'/eliminarPagos');
     }
 }
 

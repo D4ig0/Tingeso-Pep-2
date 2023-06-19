@@ -18,6 +18,8 @@ public class ProveedorController {
     @Autowired
     private ProveedorService proveedorService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping
     public ResponseEntity<List<ProveedorEntity>> getProveedores() {
         List<ProveedorEntity> proveedores = proveedorService.obtenerProveedores();
@@ -25,7 +27,7 @@ public class ProveedorController {
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(proveedores);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<?> nuevoProveedor(@RequestParam("codigo") String codigo,
                                          @RequestParam("nombre") String nombre,

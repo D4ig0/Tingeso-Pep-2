@@ -5,6 +5,7 @@ import milkStgo.pagoservice.repositories.PagoRepository;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import milkStgo.pagoservice.entities.PagoEntity;
@@ -21,6 +22,7 @@ public class  PagoController {
     private PagoService pagoService;
     private PagoRepository pagoRepository;
 
+    @CrossOrigin(origins = "http://localhost:3000")
 
     @GetMapping("/realizarCalculos")
     public ResponseEntity<Boolean> realizarCalculos()

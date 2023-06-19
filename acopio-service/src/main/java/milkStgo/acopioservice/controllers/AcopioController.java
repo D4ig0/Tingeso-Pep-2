@@ -17,6 +17,7 @@ public class AcopioController {
     @Autowired
     private AcopioService acopioService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
 
 
     @PostMapping("/fileUpload")

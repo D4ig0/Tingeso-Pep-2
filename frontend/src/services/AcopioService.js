@@ -9,6 +9,18 @@ class AcopioService{
     obtenerAcopios(){
         return axios.get(url+'/findAll');
     }
+    obtenerTurnosM(codigo){
+        return axios.get(url+'/obtenerTurnosM/'+codigo);
+    }
+    obtenerTurnosT(codigo){
+        return axios.get(url+'/obtenerTurnosT/'+codigo);
+    }
+    totalLecheProveedor(codigo){
+        return axios.get(url+'/totalLecheProveedor/'+codigo);
+    }
+    totalDiasEnviados(codigo){
+        return axios.get(url+'/totalDiasEnviados/'+codigo);
+    }
 }
 
 const instance = new AcopioService();
