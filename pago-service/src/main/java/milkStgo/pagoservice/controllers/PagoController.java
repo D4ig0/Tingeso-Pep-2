@@ -22,7 +22,6 @@ public class  PagoController {
     private PagoService pagoService;
     private PagoRepository pagoRepository;
 
-    @CrossOrigin(origins = "http://localhost:3000")
 
     @GetMapping("/realizarCalculos")
     public ResponseEntity<Boolean> realizarCalculos()

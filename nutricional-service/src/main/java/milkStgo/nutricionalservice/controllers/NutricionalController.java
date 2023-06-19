@@ -19,7 +19,6 @@ public class NutricionalController {
     @Autowired
     private NutricionalService nutricionalService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
 
     @PostMapping("/fileUploadNutricional")
     public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file) {
