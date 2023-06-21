@@ -10,7 +10,7 @@ const titleStyles = {
   fontFamily: 'Staatliches',
   fontWeight: 'bold',
   fontSize: '4rem',
-  color: 'black',textDecoration: 'none',
+  color: 'white',textDecoration: 'none',
   transition: 'none', // Agregamos esta propiedad
   
 
@@ -63,10 +63,10 @@ const NavbarHome = () => {
           <Button href ='/proveedores'style={boton}> Proveedores</Button>
           </div>
           <div  style={fondoBoton}>
-          <Button  href ='/fileUpload' style={boton}>Subir Archivos</Button>
+          <Button  href ='/subirArchivos' style={boton}>Subir Archivos</Button>
           </div>
           <div style={fondoBoton}>
-          <Button href ='/fileUpload' style={boton}>Pagos</Button>
+          <Button href ='/generarPagos' style={boton}>Pagos</Button>
           </div>
       </div>
     </nav>

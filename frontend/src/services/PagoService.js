@@ -3,8 +3,9 @@ import axios from 'axios';
 const url = 'http://localhost:8080/pagos';
 
 class PagosService{
+
     obtenerPagos(){
-        return axios.post(url+'/obtenerPagos');
+        return axios.get(url+'/obtenerPagos');
     }
     realizarCalculos(){
         return axios.get(url+'/realizarCalculos');

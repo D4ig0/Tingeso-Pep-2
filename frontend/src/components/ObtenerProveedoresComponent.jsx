@@ -5,7 +5,7 @@ import { Button } from 'rsuite';
 import { Link } from 'react-router-dom';
 import { Column, HeaderCell, Cell } from 'rsuite-table';
 
-// styles
+
 
 const table = {
   display: 'flex',
@@ -78,10 +78,7 @@ class ObtenerProveedoresComponent extends Component {
               <HeaderCell>Retencion</HeaderCell>
               <Cell dataKey="retencion" />
             </Column>
-            <Column style={columnStyles} width={150}>
-              <HeaderCell>Pagos</HeaderCell>
-              <Cell dataKey="codigo"></Cell>
-            </Column>
+            
           </Table>
         </div>
       </div>
