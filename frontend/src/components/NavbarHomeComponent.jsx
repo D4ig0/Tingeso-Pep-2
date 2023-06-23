@@ -11,7 +11,7 @@ const titleStyles = {
   fontWeight: 'bold',
   fontSize: '4rem',
   color: 'white',textDecoration: 'none',
-  transition: 'none', // Agregamos esta propiedad
+  transition: 'none',
   
 
 

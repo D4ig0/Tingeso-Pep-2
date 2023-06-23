@@ -1,32 +1,8 @@
 import React, { Component } from 'react';
 import ProveedorService from '../services/ProveedorService';
-import Table from 'rsuite/Table';
-import { Button } from 'rsuite';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import { Column, HeaderCell, Cell } from 'rsuite-table';
-
-
-
-const table = {
-  display: 'flex',
-  flexDirection: 'column',
-  marginTop: '2rem',
-  height: '100%',
-  marginLeft: '3rem',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
-const tamanio = {
-  width: '100%',
-};
-const columnStyles = {
-  backgroundColor: '#BCC0B8',
-};
-const buttonContainer = {
-  display: 'flex',
-  justifyContent:'center',
-  marginBottom: '1rem',
-};
 
 class ObtenerProveedoresComponent extends Component {
   constructor() {
@@ -48,39 +24,38 @@ class ObtenerProveedoresComponent extends Component {
 
   render() {
     return (
-      <div style={table}>
-        <div style={tamanio}>
-          <div style={buttonContainer}>
-            <Link to="/crearProveedor">
-              <Button appearance="primary">Crear Proveedor</Button>
-            </Link>
-          </div>
-          <div style={buttonContainer}>
-            <Link to="/eliminarProveedores">
-              <Button appearance="primary">Eliminar Proveedores</Button>
-            </Link>
-          </div>
-          <h1>Lista de Proveedores</h1>
-          <Table data={this.state.proveedores} autoHeight={true}>
-            <Column style={columnStyles} width={150}>
-              <HeaderCell>Codigo</HeaderCell>
-              <Cell dataKey="codigo" />
-            </Column>
-            <Column style={columnStyles} width={150}>
-              <HeaderCell>Nombre</HeaderCell>
-              <Cell dataKey="nombre" />
-            </Column>
-            <Column style={columnStyles} width={150}>
-              <HeaderCell>Categoria</HeaderCell>
-              <Cell dataKey="categoria" />
-            </Column>
-            <Column style={columnStyles} width={150}>
-              <HeaderCell>Retencion</HeaderCell>
-              <Cell dataKey="retencion" />
-            </Column>
-            
-          </Table>
+      <div className="container">
+        <div className="mt-3 mb-3">
+          <Link to="/crearProveedor">
+            <Button variant="primary">Crear Proveedor</Button>
+          </Link>
         </div>
+        <div className="mt-3 mb-3">
+          <Link to="/eliminarProveedores">
+            <Button variant="primary">Eliminar Proveedores</Button>
+          </Link>
+        </div>
+        <h1>Lista de Proveedores</h1>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Categoria</th>
+              <th>Retencion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.proveedores.map((proveedor) => (
+              <tr key={proveedor.codigo}>
+                <td>{proveedor.codigo}</td>
+                <td>{proveedor.nombre}</td>
+                <td>{proveedor.categoria}</td>
+                <td>{proveedor.retencion}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     );
   }

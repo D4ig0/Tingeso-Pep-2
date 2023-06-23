@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProveedorService from '../services/ProveedorService';
+import PagoService from '../services/PagoService';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,13 +7,13 @@ import Button from 'react-bootstrap/Button';
 
 class EliminarProveedores extends Component {
   handleEliminar = () => {
-    ProveedorService.eliminarProveedores();
-    window.location.href = "/proveedores";
-    alert("Se han eliminado todos los proveedores");
+    PagoService.eliminarPagos();
+    window.location.href = "/generarPagos";
+    alert("Se han eliminado todos los pagos");
   };
 
   handleCancelar = () => {
-    window.location.href = "/proveedores";
+    window.location.href = "/generarPagos";
   };
 
   render() {
@@ -22,7 +22,7 @@ class EliminarProveedores extends Component {
         <Row className="justify-content-center">
           <Col >
             <div className="text-center mb-5">
-              <h4>¿Estás seguro que deseas eliminar todos los proveedores?</h4>
+              <h4>¿Estás seguro que deseas eliminar todos los pagos?</h4>
               <Button className="mx-2" variant="danger" onClick={this.handleEliminar}>
                 Sí
               </Button>

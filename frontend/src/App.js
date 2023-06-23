@@ -8,6 +8,10 @@ import EliminarProveedores from './components/EliminarProveedoresComponent';
 import SubirArchivos from './components/SubirArchivosComponent';
 import GenerarPagos from './components/GenerarPagosComponent';
 import MostrarPagos from './components/VisualizarPagosComponent';
+import EliminarPagos from './components/EliminarPagosComponent';
+import VisualizarNutricional from './components/VisualizarNutricionalComponent';
+import VisualizarAcopio from './components/VisualizarAcopiosComponent';
+
 
 function App() {
   return (
@@ -23,6 +27,11 @@ function App() {
           <Route path="/subirArchivos" element={<SubirArchivos />} />
           <Route path="/generarPagos" element={<GenerarPagos />} />
           <Route path="/mostrarPagos" element={<MostrarPagos />} />
+          <Route path="/eliminarPagos" element={<EliminarPagos />} />
+          <Route path="/visualizarNutricional" element={<VisualizarNutricional />} />
+          <Route path="/visualizarAcopio" element={<VisualizarAcopio />} />
+
+
 
           
 

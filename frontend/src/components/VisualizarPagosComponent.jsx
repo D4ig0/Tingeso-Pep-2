@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
 import PagosService from "../services/PagoService";
 
@@ -24,8 +23,7 @@ class VisualizarPagosComponent extends Component {
 
   render() {
     return (
-      <Card>
-        <Table>
+        <Table className="table table-striped">
           <thead>
             <tr>
               <th>Quincena</th>
@@ -79,7 +77,6 @@ class VisualizarPagosComponent extends Component {
             ))}
           </tbody>
         </Table>
-      </Card>
     );
   }
 }

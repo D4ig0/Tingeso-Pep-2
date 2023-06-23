@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
 import NutricionalService from '../services/NutricionalService';
-import '../styles/SubirArchivos.css';
 
 class SubirNutricionales extends Component {
   constructor() {
@@ -14,7 +14,7 @@ class SubirNutricionales extends Component {
     this.setState({ file: event.target.files[0] });
   }
 
-  uploadAcopio = () => {
+  uploadNutricional = () => {
     const { file } = this.state;
     if (file) {
       const formData = new FormData();
@@ -33,10 +33,18 @@ class SubirNutricionales extends Component {
 
   render() {
     return (
-      <div>
-        <input type="file" onChange={this.handleFileChange} />
-        <button class= 'subirArchivos' onClick={this.uploadAcopio}>Subir Archivo</button>
-      </div>
+      <Form>
+        <Form.Group>
+          <Form.Control
+            type="file"
+            onChange={this.handleFileChange}
+          />
+         
+        </Form.Group>
+        <Button variant="primary" onClick={this.uploadNutricional}>
+          Subir archivo
+        </Button>
+      </Form>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
 import AcopioService from '../services/AcopioService';
-import '../styles/SubirArchivos.css';
 
 class SubirAcopios extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class SubirAcopios extends Component {
       formData.append('file', file);
       AcopioService.subirAcopio(formData)
         .then(res => {
-          window.alert("Se subió  correctamente el archivo de acopio");
+          window.alert("Se subió correctamente el archivo de acopio");
         })
         .catch(error => {
           window.alert("Error al subir el archivo: " + error);
@@ -33,12 +33,21 @@ class SubirAcopios extends Component {
 
   render() {
     return (
-      <div>
-        <input type="file" onChange={this.handleFileChange} />
-        <button class= 'subirArchivos' onClick={this.uploadAcopio}>Subir Archivo</button>
-      </div>
+      <Form>
+        <Form.Group>
+          <Form.Control
+            type="file"
+            onChange={this.handleFileChange}
+          />
+          
+        </Form.Group>
+        <Button variant="primary" onClick={this.uploadAcopio}>
+          Subir archivo
+        </Button>
+      </Form>
     );
   }
 }
 
 export default SubirAcopios;
+
