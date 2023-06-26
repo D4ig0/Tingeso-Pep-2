@@ -24,7 +24,7 @@ spec:
             - name: POSTGRES_PASSWORD
               value: "1234"
             - name: POSTGRES_DB
-              value: "tingesopep2"
+              value: "tingeso"
           volumeMounts:
             - name: postgres-tingesopep2-persistent-storage
               mountPath: /var/lib/postgresql/data
@@ -45,7 +45,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Mi
+      storage: 0.5Mi
 ---
 apiVersion: v1
 kind: Service
@@ -66,6 +66,6 @@ kind: ConfigMap
 metadata:
   name: tingesopep2-db
 data:
-  name: "tingesopep2"
+  name: "tingeso"
 
-
+---

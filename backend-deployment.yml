@@ -16,7 +16,7 @@ spec:
         - name: config-service
           image: d4ig0/config-service:latest
           ports:
-            - containerPort: 8006
+            - containerPort: 8001
 
 ---
 apiVersion: apps/v1
@@ -47,22 +47,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tingesopep2-service
+  name: acopio-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tingesopep2-service
+      app: acopio-service
   template:
     metadata:
       labels:
-        app: tingesopep2-service
+        app: acopio-service
     spec:
       containers:
-        - name: tingesopep2-service
-          image: d4ig0/tingesopep2-service:latest
+        - name: acopio-service
+          image: d4ig0/acopio-service:latest
           ports:
-            - containerPort: 8001
+            - containerPort: 8003
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
@@ -92,7 +92,7 @@ spec:
             - containerPort: 8002
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres-proveedor:5432/proveedor
+              value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
@@ -117,7 +117,7 @@ spec:
         - name: nutricional-service
           image: d4ig0/nutricional-service:latest
           ports:
-            - containerPort: 8003
+            - containerPort: 8004
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
@@ -145,7 +145,7 @@ spec:
         - name: pago-service
           image: d4ig0/pago-service:latest
           ports:
-            - containerPort: 8004
+            - containerPort: 8005
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
@@ -172,5 +172,10 @@ spec:
         - name: gateway-service
           image: d4ig0/gateway-service:latest
           ports:
-            - containerPort: 8007
+            - containerPort: 8080
+          env:
+            - name: eureka.client.serviceUrl.defaultZone
+              value: http://eureka-service.default.svc.cluster.local:8761/eureka/
+            - name: EUREKA
+              value: eureka-service
 
