@@ -6,7 +6,7 @@ spring:
       enabled: true
       uri: http://config-service:8081
   datasource:
-    url: jdbc:postgresql://localhost:5432/acopio
+    url: jdbc:postgresql://localhost:5432/tingesopep2
     username: postgres
     password: 1234
   jpa:
