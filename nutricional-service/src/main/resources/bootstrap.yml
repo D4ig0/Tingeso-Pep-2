@@ -1,19 +1,21 @@
 spring:
   config:
-    import: optional:configserver:http://localhost:8081
+    import: optional:configserver:http://config-service:8081
   application:
     name: nutricional-service
   cloud:
     config:
       enabled: true
-      uri: http://localhost:8081
+      uri: http://config-service:8081
   datasource:
     url: jdbc:postgresql://localhost:5432/nutricionaldb
     username: postgres
     password: 1234
   jpa:
+    show-sql: true
     hibernate:
-      ddl-auto: create-drop
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    ddl-auto: create-drop
 
 management:
   endpoints:
