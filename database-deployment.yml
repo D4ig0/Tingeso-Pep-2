@@ -64,7 +64,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: tingesopep2-db
+  name: tingesopep2
 data:
   name: "tingeso"
 

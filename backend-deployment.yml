@@ -16,7 +16,7 @@ spec:
         - name: config-service
           image: d4ig0/config-service:latest
           ports:
-            - containerPort: 8001
+            - containerPort: 8081
 
 ---
 apiVersion: apps/v1
@@ -62,7 +62,7 @@ spec:
         - name: acopio-service
           image: d4ig0/acopio-service:latest
           ports:
-            - containerPort: 8003
+            - containerPort: 8083
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
@@ -89,7 +89,7 @@ spec:
         - name: proveedor-service
           image: d4ig0/proveedor-service:latest
           ports:
-            - containerPort: 8002
+            - containerPort: 8082
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
@@ -117,7 +117,7 @@ spec:
         - name: nutricional-service
           image: d4ig0/nutricional-service:latest
           ports:
-            - containerPort: 8004
+            - containerPort: 8084
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
@@ -145,7 +145,7 @@ spec:
         - name: pago-service
           image: d4ig0/pago-service:latest
           ports:
-            - containerPort: 8005
+            - containerPort: 8085
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
