@@ -17,7 +17,6 @@ spec:
           image: d4ig0/config-service:latest
           ports:
             - containerPort: 8081
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -43,6 +42,34 @@ spec:
                   fieldPath: status.podIP
           ports:
             - containerPort: 8761
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proveedor-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proveedor-service
+  template:
+    metadata:
+      labels:
+        app: proveedor-service
+    spec:
+      containers:
+        - name: proveedor-service
+          image: d4ig0/proveedor-service:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "1234"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -74,34 +101,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: proveedor-service
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: proveedor-service
-  template:
-    metadata:
-      labels:
-        app: proveedor-service
-    spec:
-      containers:
-        - name: proveedor-service
-          image: d4ig0/proveedor-service:latest
-          ports:
-            - containerPort: 8082
-          env:
-            - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres-tingesopep2:5432/tingeso
-            - name: SPRING_DATASOURCE_USERNAME
-              value: "postgres"
-            - name: SPRING_DATASOURCE_PASSWORD
-              value: "1234"
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: nutricional-service
 spec:
   replicas: 1
@@ -125,7 +124,6 @@ spec:
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
               value: "1234"
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -178,4 +176,3 @@ spec:
               value: http://eureka-service.default.svc.cluster.local:8761/eureka/
             - name: EUREKA
               value: eureka-service
-

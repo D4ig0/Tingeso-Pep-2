@@ -7,5 +7,5 @@ eureka:
     service-url:
       default-zone: http://eureka-service.default.svc.cluster.local:8761/eureka/
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:8084}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:8084}
     hostname: nutricional-service
