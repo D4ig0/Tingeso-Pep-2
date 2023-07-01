@@ -16,4 +16,9 @@ spec:
         - name: gateway-service
           image: d4ig0/gateway-service:latest
           ports:
-            - containerPort: 8007
+            - containerPort: 8080
+          env:
+            - name: eureka.client.serviceUrl.defaultZone
+              value: http://eureka-service.default.svc.cluster.local:8761/eureka/
+            - name: EUREKA
+              value: eureka-service
