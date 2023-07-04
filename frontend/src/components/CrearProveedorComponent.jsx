@@ -38,10 +38,10 @@ class CrearProveedorComponent extends Component {
 
   render() {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <h1 align="center">Crear Proveedor</h1>
+      <div className="d-flex flex-column align-items-center justify-content-center">
+        <h1 className="text-center">Crear Proveedor</h1>
         <div style={{ width: '1000px' }}></div>
-        <Form>
+        <Form style={{ width: '400px' }}>
           <Form.Group controlId="nombre">
             <Form.Label>Nombre</Form.Label>
             <Form.Control type="text" placeholder="Ingrese el nombre" onChange={this.changeNombreHandler} />
@@ -72,7 +72,7 @@ class CrearProveedorComponent extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Button variant="primary" onClick={this.saveProveedor}>Crear Proveedor</Button>
+          <Button variant="primary" onClick={this.saveProveedor} className="mt-3">Crear Proveedor</Button>
         </Form>
       </div>
     );
@@ -80,3 +80,4 @@ class CrearProveedorComponent extends Component {
 }
 
 export default CrearProveedorComponent;
+  

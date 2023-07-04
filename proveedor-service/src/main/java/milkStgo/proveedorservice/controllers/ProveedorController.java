@@ -22,8 +22,6 @@ public class ProveedorController {
     @GetMapping
     public ResponseEntity<List<ProveedorEntity>> getProveedores() {
         List<ProveedorEntity> proveedores = proveedorService.obtenerProveedores();
-        if(proveedores.isEmpty())
-            return ResponseEntity.noContent().build();
         return ResponseEntity.ok(proveedores);
     }
     @PostMapping

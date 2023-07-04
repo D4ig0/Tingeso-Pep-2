@@ -23,6 +23,7 @@ class VisualizarPagosComponent extends Component {
 
   render() {
     return (
+      <div className="table-responsive">
         <Table className="table table-striped">
           <thead>
             <tr>
@@ -77,6 +78,7 @@ class VisualizarPagosComponent extends Component {
             ))}
           </tbody>
         </Table>
+      </div>
     );
   }
 }
